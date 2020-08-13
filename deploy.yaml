@@ -22,12 +22,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: "service-2020"
+  name: "service-2020"
 spec:
-    ports:
+  ports:
     - port: 80
-        targetPort: 80
-        protocol: TCP
-    type: NodePort
-    selector:
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
     app: "2020"
