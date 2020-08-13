@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://app.service.com/api'
+  base_url: 'http://app.service.com:31089/api'
 };
 
 /*http://demo.backend/
