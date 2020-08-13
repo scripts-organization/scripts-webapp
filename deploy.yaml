@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "2020-deployment"
+spec:
+  selector:
+    matchLabels:
+      app: "2020"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "2020"
+    spec:
+      containers:
+      - image: ${REPOSITORY_TAG}
+        imagePullPolicy: Never
+        name: "2020"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: "service-2020"
+spec:
+    ports:
+    - port: 80
+        targetPort: 80
+        protocol: TCP
+    type: NodePort
+    selector:
+    app: "2020"
