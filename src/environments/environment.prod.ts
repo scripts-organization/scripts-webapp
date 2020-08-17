@@ -2,5 +2,5 @@
 
 export const environment = {
   production: true,
-  base_url: 'http://app.service.com:32419/api'
+  base_url: 'http://app.service.com:32557/api'
 };
