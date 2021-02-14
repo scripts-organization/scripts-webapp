@@ -1,0 +1,107 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                <input type="text"
+                        class="form-control"
+                        placeholder="Buscar delegado..."
+                        #txtTermino
+                        (keyup)="buscar( txtTermino.value )"/>
+
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row animated fadeIn fast"
+    *ngIf="cargando">
+    <div class="col-12">
+        
+        <div class="alert alert-info text-center">
+          <h4 class="alert-heading">Cargando</h4>
+          <i class="fa fa-spin fa-refresh fa-2x"></i>
+          <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div> 
+
+
+<div class="row"
+    *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 *ngIf=recinto class="card-title">Recinto: ({{ recinto.nombre }}) - Mesas: ({{ recinto.cantidadmesas }})</h4>
+                        <h6 class="card-subtitle">Delegados Registrados: ({{ delegados.length }})</h6>                     
+                    </div>
+
+                    <div class="col">
+                        <div class="text-right">
+                            <a class="btn btn-primary"
+                               routerLink="/dashboard/delegado/nuevo">
+                                <i class="fa fa-hospital-o"></i> 
+                                Crear delegado
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="w100">CI</th>
+                                <th>Nombre</th>
+                                <th class="w100">Celular</th>
+                                <th class="w100 text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let delegado of delegados">
+                                <td> 
+                                    {{ delegado.ci }}
+                                </td>
+                                <td>
+                                    {{ delegado.nombre }}
+                                </td>
+                                <td>
+                                    {{ delegado.celular }}
+                                </td>
+
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard','delegado', delegado._id ]" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a>
+                                    
+                                    <a class="cursor"
+                                        data-toggle="tooltip" 
+                                        data-original-title="Borrar"
+                                        (click)="borrarDelegado( delegado )"> 
+                                        <i class="fa fa-close text-danger"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+<!-- 
+                <button class="btn btn-secondary">Anteriores</button>
+                &nbsp;
+                <button class="btn btn-secondary">Siguientes</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>

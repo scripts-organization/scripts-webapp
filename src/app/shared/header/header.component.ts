@@ -16,6 +16,7 @@ export class HeaderComponent {
   constructor( private usuarioService: UsuarioService,
                private router: Router ) {
     this.usuario = usuarioService.usuario;
+    // console.log("header " + this.usuario.email );
   }
 
   logout() {

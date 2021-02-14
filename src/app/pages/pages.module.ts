@@ -22,10 +22,12 @@ import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.comp
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-
-
-
-
+import { RecintosComponent } from './mantenimientos/recintos/recintos.component';
+import { DelegadosComponent } from './mantenimientos/delegados/delegados.component';
+import { DelegadoComponent } from './mantenimientos/delegado/delegado.component';
+import { JeferecintoComponent } from './mantenimientos/jeferecinto/jeferecinto.component';
+import { AlcaldeComponent } from './mesas/alcalde/alcalde.component';
+import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcalde.component';
 
 @NgModule({
   declarations: [
@@ -42,22 +44,28 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     MedicosComponent,
     MedicoComponent,
     BusquedaComponent,
+    RecintosComponent,
+    DelegadosComponent,
+    DelegadoComponent,
+    JeferecintoComponent,
+    AlcaldeComponent,
+    ValidarAlcaldeComponent,
   ],
   exports: [
     DashboardComponent,
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
   ],
-  imports: [ 
+  imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
     ComponentsModule,
-    PipesModule
-  ]
+    PipesModule,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

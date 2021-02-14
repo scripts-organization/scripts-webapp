@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Hospital } from '../models/hospital.model';
 import { Medico } from '../models/medico.model';
+import { Recinto } from '../models/recinto.model';
+import { Delegado } from '../models/delegado.model';
 
 const base_url = environment.base_url;
 
@@ -44,6 +46,14 @@ export class BusquedasService {
     return resultados;
   }
 
+  private transformarRecintos( resultados: any[] ): Recinto[] {
+    return resultados;
+  }
+
+  private transformarDelegados( resultados: any[] ): Delegado[] {
+    return resultados;
+  }
+
   busquedaGlobal( termino: string ) {
 
     const url = `${ base_url }/todo/${ termino }`;
@@ -53,7 +63,7 @@ export class BusquedasService {
 
 
   buscar( 
-      tipo: 'usuarios'|'medicos'|'hospitales',
+      tipo: 'usuarios'|'medicos'|'hospitales'|'recintos'|'delegados',
       termino: string
     ) {
 
@@ -61,7 +71,6 @@ export class BusquedasService {
     return this.http.get<any[]>( url, this.headers )
             .pipe(
               map( (resp: any ) => { 
-
                 switch ( tipo ) {
                   case 'usuarios':
                     return this.transformarUsuarios( resp.resultados )
@@ -71,6 +80,12 @@ export class BusquedasService {
 
                   case 'medicos':
                      return this.transformarMedicos( resp.resultados )
+                  
+                  case 'recintos':
+                     return this.transformarRecintos( resp.resultados )
+                  
+                  case 'delegados':
+                    return this.transformarDelegados( resp.resultados )
                 
                   default:
                     return [];
