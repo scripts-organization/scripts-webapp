@@ -1,1 +1,28 @@
-<p>validar-alcalde works!</p>
+<div class="col">
+    <div >
+        <button class="btn btn-primary"
+                (click)="cargarDatos()">
+            <i class="fa fa-hospital-o"></i> 
+            Cargar Datos
+        </button>
+    </div>
+</div>
+
+<div class="example-header">
+    Selection:
+    <span id="selectedRows"></span>
+  </div>
+
+<!-- *ngIf="!cargando" -->
+<ag-grid-angular 
+    style="width: 100%; height: 75vh;"
+    class="ag-theme-alpine"  
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowSelection]="rowSelection"
+    [rowData]="rowData"
+    (selectionChanged)="onSelectionChanged($event)"
+    (gridReady)="onGridReady($event)"
+    (cellDoubleClicked)="onCellDoubleClicked($event)"
+>
+</ag-grid-angular>

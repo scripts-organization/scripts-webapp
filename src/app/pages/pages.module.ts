@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
 
 // Modulos
 import { SharedModule } from '../shared/shared.module';
@@ -28,6 +29,7 @@ import { DelegadoComponent } from './mantenimientos/delegado/delegado.component'
 import { JeferecintoComponent } from './mantenimientos/jeferecinto/jeferecinto.component';
 import { AlcaldeComponent } from './mesas/alcalde/alcalde.component';
 import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcalde.component';
+import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcal
     JeferecintoComponent,
     AlcaldeComponent,
     ValidarAlcaldeComponent,
+    DatosAlcaldeComponent,
   ],
   exports: [
     DashboardComponent,
@@ -66,6 +69,7 @@ import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcal
     RouterModule,
     ComponentsModule,
     PipesModule,
+    AgGridModule.withComponents([])
   ],
 })
 export class PagesModule {}

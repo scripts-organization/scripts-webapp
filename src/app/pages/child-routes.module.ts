@@ -22,6 +22,8 @@ import { DelegadoComponent } from './mantenimientos/delegado/delegado.component'
 import { JeferecintoComponent } from './mantenimientos/jeferecinto/jeferecinto.component';
 import { AlcaldeComponent } from './mesas/alcalde/alcalde.component';
 import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcalde.component';
+import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.component';
+
 
 const childRoutes: Routes = [
   { path: '', component: DashboardComponent, data: { titulo: 'Dashboard' } },
@@ -106,7 +108,12 @@ const childRoutes: Routes = [
   {
     path: 'validar-alcalde',
     component: ValidarAlcaldeComponent,
-    data: { titulo: 'Validar Alcalde' },
+    data: { titulo: 'Mesas Alcalde' },
+  },
+  {
+    path: 'datos-alcalde/:id',
+    component: DatosAlcaldeComponent,
+    data: { titulo: 'Datos Alcalde' },
   },
 
   // Rutas de Admin

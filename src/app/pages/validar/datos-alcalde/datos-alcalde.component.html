@@ -1,0 +1,118 @@
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                
+                <h4 class="card-title">Delegado</h4>
+                <h6 class="card-subtitle">Actualizar información</h6>
+
+                <form class="form-horizontal p-t-20"
+                        [formGroup]="mesaForm"
+                        (submit)="validarMesa()">
+
+                                     
+                   
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-3 control-label">codigo</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" 
+                                        formControlName="codigo"
+                                        class="form-control" 
+                                        id="exampleInputuname4" 
+                                        placeholder="codigo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname5" class="col-sm-3 control-label">numero</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" 
+                                        formControlName="numero"
+                                        class="form-control" 
+                                        id="exampleInputuname5" 
+                                        placeholder="numero">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname5" class="col-sm-3 control-label">habilitados</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" 
+                                        formControlName="habilitados"
+                                        class="form-control" 
+                                        id="exampleInputuname5" 
+                                        placeholder="habilitados">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">llenada</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text" 
+                                        formControlName="llenada"
+                                        class="form-control" 
+                                        id="exampleInputuname3" 
+                                        placeholder="llenada">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Recinto</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <select class="form-control"
+                                        formControlName="recinto">
+                                    <option value="">Seleccione Recinto</option>
+                                    <option *ngFor="let recinto of recintos"
+                                        [value]="recinto._id">
+                                        {{ recinto.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="form-group row m-b-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="submit"
+                                    [disabled]="delegadoForm.invalid"
+                                    class="btn btn-success waves-effect waves-light">
+                                <i class="fa fa-save"></i>
+                                Guardar
+                            </button>
+                        </div>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="col animated fadeIn fast"  
+        *ngIf="recintoSeleccionado">
+        <div class="card">
+            <div class="card-body">
+                
+                <h4 class="card-title">Recinto</h4>
+                <h6 class="card-subtitle">{{ recintoSeleccionado.nombre }}</h6>
+
+                <img [src]="recintoSeleccionado.img | imagen:'recintos'" 
+                    class="img-thumbnail"/>
+
+            </div>
+        </div>
+
+    </div> -->
+</div>
+
+

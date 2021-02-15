@@ -33,4 +33,13 @@ export class MesaAlcaldeService {
         map((resp: { ok: boolean; mesasAlcalde: MesaAlcalde[] }) => resp.mesasAlcalde)
       );
   }
+
+  obtenerMesaPorCodigo( codigo: string ) {
+
+    const url = `${ base_url }/mesa_alcalde/codigo/${ codigo }`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, mesaAlcalde: MesaAlcalde }) => resp.mesaAlcalde )
+              );
+  }
 }
