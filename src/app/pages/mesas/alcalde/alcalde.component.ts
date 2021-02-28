@@ -42,7 +42,7 @@ export class AlcaldeComponent implements OnInit {
     this.mesaAlcaldeService.cargarMesasAlcalde().subscribe((mesasAlcalde) => {
       this.cargando = false;
       this.mesasAlcalde = mesasAlcalde;
-      console.log(mesasAlcalde)
+      //console.log(mesasAlcalde)
     });
   }
 

@@ -105,16 +105,9 @@ export class ValidarAlcaldeComponent implements OnInit {
   }
 
   onGridReady(params) {
-    console.log(params);
+    //console.log(params);
     this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    
-    // this.rowClassRules = {
-    //   'rag-green-outer': function(params) { return true; },
-    //   'rag-amber-outer': function(params) { return params.data.numero === 2; },
-    //   'rag-red-outer': function(params) { return params.data.numero === 3; }
-    // };
-    
+    this.gridColumnApi = params.columnApi; 
     this.cargarMesasAlcalde();
     
   }

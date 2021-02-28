@@ -37,7 +37,7 @@ export class RecintoService {
   }
 
   obtenerRecintoPorId( id: string ) {
-    console.log("id-"+id)
+    //console.log("id-"+id)
     const url = `${ base_url }/recintos/${ id }`;
     return this.http.get( url, this.headers )
               .pipe(
@@ -49,7 +49,7 @@ export class RecintoService {
   crearRecinto( recinto: Recinto ) {
 
     const url = `${ base_url }/recintos`;
-    console.log(recinto);
+    //console.log(recinto);
     return this.http.post( url, recinto, this.headers );
   }
   

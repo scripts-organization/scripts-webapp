@@ -68,7 +68,7 @@ export class ModalImagenComponent implements OnInit {
       .actualizarFoto( this.imagenSubir, tipo, id )
       .subscribe((response) => {
           const img = response['MesaAlcalde'].img_1;
-          console.log('response received is ', response);
+          //console.log('response received is ', response);
           Swal.fire('Guardado', 'Imagen de usuario actualizada', 'success');
           this.modalImagenService.nuevaImagen.emit(response['MesaAlcalde'].img_1);
           this.cerrarModal();

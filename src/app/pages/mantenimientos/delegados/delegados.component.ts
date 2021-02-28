@@ -34,7 +34,7 @@ export class DelegadosComponent implements OnInit, OnDestroy {
     private recintoService: RecintoService
   ) {
     this.usuario = usuarioService.usuario;
-    console.log('usuario: ' + this.usuario.recinto);
+    //('usuario: ' + this.usuario.recinto);
   }
 
   ngOnInit(): void {

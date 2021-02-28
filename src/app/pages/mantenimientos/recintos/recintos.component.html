@@ -64,7 +64,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <!-- <th class="w100">Foto</th> -->
+
                                 <th>Nombre</th>
                                 <th class="w100">Mesas</th>
                                 <th class="w100">Distrito</th>
@@ -73,12 +73,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let recinto of recintos">
-                                <!-- <td class="text-center"> 
-                                    <img [src]="recinto.img | imagen:'recintos'" 
-                                        [alt]="recinto.nombre"
-                                        class="w100 cursor"
-                                        (click)="abrirModal(recinto)"> 
-                                </td> -->
+
                                 <td>
                                     <input type="text" 
                                             class="form-control"
@@ -118,10 +113,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- <button class="btn btn-secondary">Anteriores</button>
-                &nbsp;
-                <button class="btn btn-secondary">Siguientes</button> -->
 
             </div>
         </div>

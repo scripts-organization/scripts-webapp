@@ -33,7 +33,7 @@ export class DatosAlcaldeComponent implements OnInit {
 
     this.activatedRouted.params.subscribe( params => {
       this.codigo = params.id
-      console.log( params.id );
+      //console.log( params.id );
     });
    }
 
@@ -85,7 +85,7 @@ export class DatosAlcaldeComponent implements OnInit {
       }
       this.cargando = false;
       this.mesaAlcalde = mesaAlcalde;
-      console.log("img1: " + this.mesaAlcalde[0].img_1);
+      //console.log("img1: " + this.mesaAlcalde[0].img_1);
     
       
       const { codigo, numero, habilitados, 
