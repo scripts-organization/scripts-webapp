@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://francisquita.org/api',
+  base_url: 'https://francisquita.org/api',
   // base_url: 'http://scripts-api.herokuapp.com/api',
 };
 
