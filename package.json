@@ -2,18 +2,25 @@
   "name": "adminpro",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.0",
+    "@angular/cli": "~10.0.0",
     "@angular/common": "~10.0.0",
     "@angular/compiler": "~10.0.0",
+    "@angular/compiler-cli": "~10.0.0",
     "@angular/core": "~10.0.0",
     "@angular/forms": "~10.0.0",
     "@angular/platform-browser": "~10.0.0",
@@ -22,10 +29,13 @@
     "ag-grid-angular": "^25.0.1",
     "ag-grid-community": "^25.0.1",
     "chart.js": "^2.9.3",
+    "express": "^4.17.1",
     "ng2-charts": "^2.3.2",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.15.2",
     "tslib": "^2.0.0",
+    "typescript": "~3.9.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
