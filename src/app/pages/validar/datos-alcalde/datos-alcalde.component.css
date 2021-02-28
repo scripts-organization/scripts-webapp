@@ -1,0 +1,64 @@
+.datos-mesa {
+    width: 100px;
+}
+
+.form-control {
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.control-label {
+    align-items: right;
+}
+
+.botones-foto {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    /* background: yellowgreen; */
+}
+
+.revision {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.form-check {
+    padding: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px; 
+}
+
+.botones {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.boton {
+    margin: 20px;
+}
+
+.boton-reset {
+    align-items: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding: 5px;
+}

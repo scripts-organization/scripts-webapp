@@ -19,6 +19,8 @@ export class PerfilComponent implements OnInit {
   public usuario: Usuario;
   public imagenSubir: File;
   public imgTemp: any = null;
+  public imgTemp2: any = null;
+
 
   constructor( private fb: FormBuilder,
                private usuarioService: UsuarioService,
@@ -58,25 +60,36 @@ export class PerfilComponent implements OnInit {
     }
 
     const reader = new FileReader();
-    reader.readAsDataURL( file );
+    reader.readAsDataURL( file[0] );
+
+    const reader2 = new FileReader();
+    reader2.readAsDataURL( file[1] );
 
     reader.onloadend = () => {
       this.imgTemp = reader.result;
     }
+    reader2.onloadend = () => {
+      this.imgTemp2 = reader2.result;
+    }
+
 
   }
 
   subirImagen() {
 
-    this.fileUploadService
+    return this.fileUploadService
       .actualizarFoto( this.imagenSubir, 'usuarios', this.usuario.uid )
-      .then( img => {
-        this.usuario.img = img;
-        Swal.fire('Guardado', 'Imagen de usuario actualizada', 'success');
-      }).catch( err => {
-        console.log(err);
-        Swal.fire('Error', 'No se pudo subir la imagen', 'error');
-      })
+  //     .subscribe((response) => {
+  //       console.log('response received is ', response);
+  //       Swal.fire('Guardado', 'Imagen de usuario actualizada', 'success');
+  //  })
+      // .then( img => {
+      //   this.usuario.img = img;
+        
+      // }).catch( err => {
+      //   console.log(err);
+      //   Swal.fire('Error', 'No se pudo subir la imagen', 'error');
+      // })
 
   }
 

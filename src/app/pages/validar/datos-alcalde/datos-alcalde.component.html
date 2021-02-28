@@ -1,71 +1,310 @@
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 
-                <h4 class="card-title">Delegado</h4>
-                <h6 class="card-subtitle">Actualizar información</h6>
+                <h4 class="card-title">Mesa: {{codigo}} </h4>
+                
+                <!-- <h6 class="card-subtitle">Colegio: </h6> -->
 
                 <form class="form-horizontal p-t-20"
                         [formGroup]="mesaForm"
                         (submit)="validarMesa()">
 
-                                     
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right"></label>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="observada" formControlName="observada">
+                                <label class="form-check-label" for="observada">
+                                    Observaciones
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label text-right"></label>
+                        <div class="col-sm-4">
+                            <label>Alcalde</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Concejales</label>
+                        </div>
+                    </div>
+                               
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">Sumate:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_sumate" class="form-control" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_sumate')">
+                                * valor sumate invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_sumate" class="form-control" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_sumate')">
+                                * valor sumate invalido
+                            </span>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">fpv:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_fpv" class="form-control" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_fpv')">
+                                * valor fpv invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_fpv" class="form-control" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_fpv')">
+                                * valor fpv invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pdc:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_pdc" class="form-control" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_pdc')">
+                                * valor pdc invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_pdc" class="form-control" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_pdc')">
+                                * valor pdc invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">somos:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_somos" class="form-control" id="exampleInputuname1" placeholder="somos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_somos')">
+                                * valor somos invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_somos" class="form-control" id="exampleInputuname1" placeholder="somos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_somos')">
+                                * valor somos invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">mas_ipsp:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_mas_ipsp" class="form-control" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_mas_ipsp')">
+                                * valor mas_ipsp invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_mas_ipsp" class="form-control" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_mas_ipsp')">
+                                * valor mas_ipsp invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">ca:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_ca" class="form-control" id="exampleInputuname1" placeholder="ca" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_ca')">
+                                * valor ca invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_ca" class="form-control" id="exampleInputuname1" placeholder="ca" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_ca')">
+                                * valor ca invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">mts:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_mts" class="form-control" id="exampleInputuname1" placeholder="mts" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_mts')">
+                                * valor mts invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_mts" class="form-control" id="exampleInputuname1" placeholder="mts" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_mts')">
+                                * valor mts invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pan_bol:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_pan_bol')">
+                                * valor pan_bol invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_pan_bol')">
+                                * valor pan_bol invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pan_bol:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_pan_bol')">
+                                * valor pan_bol invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_pan_bol')">
+                                * valor pan_bol invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">ucs:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_ucs" class="form-control" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_ucs')">
+                                * valor ucs invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_ucs" class="form-control" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_ucs')">
+                                * valor ucs invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">blancos:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_blancos" class="form-control" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_blancos')">
+                                * valor blancos invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_blancos" class="form-control" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_blancos')">
+                                * valor blancos invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">nulos:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_nulos" class="form-control" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('a_nulos')">
+                                * valor nulos invalido
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="c_nulos" class="form-control" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
+                            </div>
+                            <span class="form-text text-danger" *ngIf="campoEsValido('c_nulos')">
+                                * valor nulos invalido
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">observada:</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" formControlName="observada" class="form-control" id="exampleInputuname1" placeholder="observada">
+                            </div>
+                        </div>
+                    </div> -->
+                    
+
+                    <div class="revision"> 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="revisadafoto" formControlName="revisadafoto">
+                            <label class="form-check-label" for="revisadafoto">
+                                Foto Revisada
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="revisadaacta" formControlName="revisadaacta">
+                            <label class="form-check-label" for="revisadaacta">
+                                Acta Revisada
+                            </label>
+                        </div>
+                    </div>    
                    
 
-                    <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-3 control-label">codigo</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <input type="text" 
-                                        formControlName="codigo"
-                                        class="form-control" 
-                                        id="exampleInputuname4" 
-                                        placeholder="codigo">
-                            </div>
-                        </div>
-                    </div>
+                  
 
-                    <div class="form-group row">
-                        <label for="exampleInputuname5" class="col-sm-3 control-label">numero</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <input type="text" 
-                                        formControlName="numero"
-                                        class="form-control" 
-                                        id="exampleInputuname5" 
-                                        placeholder="numero">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="exampleInputuname5" class="col-sm-3 control-label">habilitados</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <input type="text" 
-                                        formControlName="habilitados"
-                                        class="form-control" 
-                                        id="exampleInputuname5" 
-                                        placeholder="habilitados">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="exampleInputuname3" class="col-sm-3 control-label">llenada</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="ti-user"></i></div>
-                                <input type="text" 
-                                        formControlName="llenada"
-                                        class="form-control" 
-                                        id="exampleInputuname3" 
-                                        placeholder="llenada">
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <!-- <div class="form-group row">
                         <label for="exampleInputEmail3" class="col-sm-3 control-label">Recinto</label>
@@ -82,21 +321,33 @@
                             </div>
                         </div>
                     </div> -->
-
-                    <!-- <div class="form-group row m-b-0">
-                        <div class="offset-sm-3 col-sm-9">
-                            <button type="submit"
-                                    [disabled]="delegadoForm.invalid"
-                                    class="btn btn-success waves-effect waves-light">
-                                <i class="fa fa-save"></i>
-                                Guardar
-                            </button>
+                    <div class="botones">
+                        <div class="form-group row m-b-0">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="button"  routerLink="/dashboard/validar-alcalde"
+                                        class="btn btn-danger waves-effect waves-light boton">
+                                    <i class="fa fa-window-close"></i>
+                                    Cancelar
+                                </button>
+                            </div>
                         </div>
-                    </div> -->
+                        <div class="form-group row m-b-0">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit"
+                                        [disabled]="mesaForm.invalid"
+                                        class="btn btn-success waves-effect waves-light boton">
+                                    <i class="fa fa-save"></i>
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+    
 
     <!-- <div class="col animated fadeIn fast"  
         *ngIf="recintoSeleccionado">
@@ -113,6 +364,59 @@
         </div>
 
     </div> -->
+
+
+    <div class="col animated fadeIn fast" *ngIf="mesaAlcalde">
+    <div class="card">
+        <div class="card-body">
+            <!-- <h4 class="card-title">Actas</h4>
+            <h6 class="card-subtitle">Imagen: </h6> -->
+            <!-- <div *ngIf=jefeSeleccionado>
+                <h4 class="card-title">Jefe de Recinto</h4>
+                <h6 class="card-subtitle">{{ jefeSeleccionado.nombre }}</h6>
+                <h4 class="card-title">Celular</h4>
+                <h6 class="card-subtitle">{{ jefeSeleccionado.celular }}</h6>
+            </div> -->
+            <div class="botones-foto">
+                <div class="btn-group" role="group" >
+                    <button type="button" class="btn btn-primary" (click)="foto = '1'">1</button>
+                    <button type="button" class="btn btn-primary" (click)="foto = '2'">2</button>
+                    <button type="button" class="btn btn-primary" (click)="foto = '3'">3</button>
+                    
+
+                </div>
+                
+                
+            </div>
+
+            <img [src]="mesaAlcalde[0].img_1 | imagen:'recintos'" *ngIf="foto == '1'"
+                class="img-thumbnail"/>
+            
+            <img [src]="mesaAlcalde[0].img_2 | imagen:'recintos'" *ngIf="foto == '2'"
+            class="img-thumbnail"/>
+
+            <img [src]="mesaAlcalde[0].img_3 | imagen:'recintos'" *ngIf="foto == '3'"
+            class="img-thumbnail"/>
+
+        </div>
+    </div>
+    <div class="botones-foto">
+        <div class="btn-group" role="group" >
+            <button type="button"  (click)="abrirModal()"
+                                class="btn btn-warning waves-effect waves-light boton">
+                            <i class="fa fa-upload"></i>
+                            Subir Imagen
+            </button>
+            <button type="button"  (click)="resetMesa()"
+                                class="btn btn-danger waves-effect waves-light boton">
+                            <i class="fa fa-window-restore"></i>
+                            Resetear
+            </button>
+        </div>
+    </div>
+    
+
+</div>
 </div>
 
 

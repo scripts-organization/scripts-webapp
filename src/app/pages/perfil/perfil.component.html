@@ -58,10 +58,12 @@
                 <div class="text-center">
                     <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
                     <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar">
+                    <img *ngIf="imgTemp2" [src]="imgTemp2" class="img-avatar">
+
                 </div>
 
                 <input type="file"
-                        (change)="cambiarImagen($event.target.files[0])">
+                        (change)="cambiarImagen($event.target.files)" multiple>
 
                 <br>
                 <br>

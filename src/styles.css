@@ -24,6 +24,7 @@
 .img-avatar {
     height: 200px;
     width: 200px;
+    margin: 5px;
 }
 
 .w75 {
@@ -63,4 +64,18 @@
     top: 0px;
     width: 100%;
     z-index: 9999;
+}
+
+.acta-lista {
+    background-color: rgb(246, 248, 213) !important;
+    background: 'black'
+}
+
+.foto-revisada {
+    background-color: rgb(198, 243, 180) !important;
+    background: 'black'
+}
+.acta-revisada {
+    background-color: rgb(232, 198, 255) !important;
+    background: 'black'
 }

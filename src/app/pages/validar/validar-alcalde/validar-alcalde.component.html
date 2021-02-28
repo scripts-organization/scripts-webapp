@@ -22,7 +22,9 @@
     [rowSelection]="rowSelection"
     [rowData]="rowData"
     (selectionChanged)="onSelectionChanged($event)"
+    [rowClassRules]="rowClassRules"
     (gridReady)="onGridReady($event)"
     (cellDoubleClicked)="onCellDoubleClicked($event)"
+    
 >
 </ag-grid-angular>

@@ -42,4 +42,20 @@ export class MesaAlcaldeService {
                 map( (resp: {ok: boolean, mesaAlcalde: MesaAlcalde }) => resp.mesaAlcalde )
               );
   }
+
+  actualizarMesaAlcalde( mesaAlcalde: MesaAlcalde ) {
+    const url = `${ base_url }/mesa_alcalde/${ mesaAlcalde._id }`;
+    return this.http.put( url, mesaAlcalde, this.headers );
+
+  }
+
+  resetMesa( id: string ) {
+    const url = `${ base_url }/mesa_alcalde/reset/${ id }`;
+    return this.http.put( url, {} ,this.headers );            
+  }
+
+  subirFotosMesa( id: string, images: any[] ) {
+    const url = `${ base_url }/mesa_alcalde/foto/${ id }`;
+    return this.http.put( url, images ,this.headers );            
+  }
 }
