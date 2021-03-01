@@ -44,6 +44,12 @@ export class MesaAlcaldeService {
   }
 
   actualizarMesaAlcalde( mesaAlcalde: MesaAlcalde ) {
+
+    debugger;
+    if(mesaAlcalde['revisadafoto'] === true){
+      mesaAlcalde['a_llenada'] = true;
+      mesaAlcalde['c_llenada'] = true;
+    }
     const url = `${ base_url }/mesa_alcalde/${ mesaAlcalde._id }`;
     return this.http.put( url, mesaAlcalde, this.headers );
 

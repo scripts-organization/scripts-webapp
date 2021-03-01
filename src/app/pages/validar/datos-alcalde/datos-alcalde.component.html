@@ -4,6 +4,7 @@
         <div class="card">
             <div class="card-body">
                 
+                <h4 class="card-title" *ngIf="mesaAlcalde"><b>{{mesaAlcalde[0].recinto.nombre}} </b></h4>
                 <h4 class="card-title">Mesa: {{codigo}} </h4>
                 
                 <!-- <h6 class="card-subtitle">Colegio: </h6> -->
@@ -171,26 +172,6 @@
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_mts')">
                                 * valor mts invalido
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pan_bol:</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input type="text" formControlName="a_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
-                            </div>
-                            <span class="form-text text-danger" *ngIf="campoEsValido('a_pan_bol')">
-                                * valor pan_bol invalido
-                            </span>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input type="text" formControlName="c_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
-                            </div>
-                            <span class="form-text text-danger" *ngIf="campoEsValido('c_pan_bol')">
-                                * valor pan_bol invalido
                             </span>
                         </div>
                     </div>

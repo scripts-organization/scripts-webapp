@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { delay } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 import Swal from 'sweetalert2';
 
@@ -23,6 +24,7 @@ export class DatosAlcaldeComponent implements OnInit {
   public cargando: boolean = true;
   public codigo: string;
   public mesaAlcalde: MesaAlcalde;
+  private imgSubs: Subscription;
 
 
   constructor(private fb: FormBuilder,
@@ -39,6 +41,9 @@ export class DatosAlcaldeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarMesaAlcalde();
+    this.imgSubs = this.imgSubs = this.modalImagenService.nuevaImagen
+      .pipe(delay(100))
+      .subscribe( img => this.cargarMesaAlcalde() );
 
     this.mesaForm = this.fb.group({
       codigo: ['', Validators.required],
@@ -84,6 +89,7 @@ export class DatosAlcaldeComponent implements OnInit {
         return this.router.navigateByUrl(`/dashboard/validar-alcalde`);
       }
       this.cargando = false;
+      debugger;
       this.mesaAlcalde = mesaAlcalde;
       //console.log("img1: " + this.mesaAlcalde[0].img_1);
     
@@ -111,7 +117,7 @@ export class DatosAlcaldeComponent implements OnInit {
       this.mesaAlcaldeService.actualizarMesaAlcalde( data )
         .subscribe( resp => {
           Swal.fire('Actualizada', `Mesa Alcalde: ${ codigo } actualizada correctamente`, 'success').then(()=>{
-            this.router.navigate(['/dashboard/validar-alcalde']);
+            // this.router.navigate(['/dashboard/validar-alcalde']);
 
           })
         })
@@ -149,6 +155,7 @@ export class DatosAlcaldeComponent implements OnInit {
 
   abrirModal() {
     this.modalImagenService.abrirModal('usuarios', this.mesaAlcalde[0]._id );
+    // console.log("this.imgSubs: " + this.imgSubs)
   }
 
 }
