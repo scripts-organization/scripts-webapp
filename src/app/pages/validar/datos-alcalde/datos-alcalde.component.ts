@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -11,6 +11,9 @@ import { MesaAlcalde } from '../../../models/mesaAlcalde.model';
 import { MesaAlcaldeService } from '../../../services/mesa-alcalde.service';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 
+interface ErrorValidate {
+  [s: string]: boolean;
+}
 
 @Component({
   selector: 'app-datos-alcalde',
@@ -25,6 +28,11 @@ export class DatosAlcaldeComponent implements OnInit {
   public codigo: string;
   public mesaAlcalde: MesaAlcalde;
   private imgSubs: Subscription;
+
+  public alcaldeValidos;
+  public concejalValidos;
+  public mesaGanada;
+  public sumaValida = true;
 
 
   constructor(private fb: FormBuilder,
@@ -74,12 +82,15 @@ export class DatosAlcaldeComponent implements OnInit {
       c_blancos: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/),Validators.max(220), Validators.min(0)] ],
       c_nulos: ['', [Validators.required,Validators.pattern(/^[0-9]\d*$/),Validators.max(220), Validators.min(0)] ],
       observada: ['', Validators.required],
+      observaciones: [''],
       revisadafoto: ['', Validators.required],
       revisadaacta: ['', Validators.required]
+    }, {
+      //validators: this.suma()
     });
   }
 
-
+  
   cargarMesaAlcalde() {
     this.cargando = true;
     this.mesaAlcaldeService.obtenerMesaPorCodigo(this.codigo).pipe(
@@ -97,13 +108,19 @@ export class DatosAlcaldeComponent implements OnInit {
       const { codigo, numero, habilitados, 
          a_llenada, a_sumate, a_fpv, a_pdc, a_somos, a_mas_ipsp, a_ca, a_mts, a_pan_bol, a_ucs, a_blancos, a_nulos,
          c_llenada, c_sumate, c_fpv, c_pdc, c_somos, c_mas_ipsp, c_ca, c_mts, c_pan_bol, c_ucs, c_blancos, c_nulos,
-         img_1, img_2, img_3, observada, revisadafoto, revisadaacta} = mesaAlcalde[0]; 
+         img_1, img_2, img_3, observada, revisadafoto, revisadaacta, mesaganada, observaciones } = mesaAlcalde[0]; 
       this.mesaForm.setValue({ codigo, numero, habilitados,
         a_llenada, a_sumate, a_fpv, a_pdc, a_somos, a_mas_ipsp, a_ca, a_mts, a_pan_bol, a_ucs, a_blancos, a_nulos, 
         c_llenada, c_sumate, c_fpv, c_pdc, c_somos, c_mas_ipsp, c_ca, c_mts, c_pan_bol, c_ucs, c_blancos, c_nulos,
-        observada, revisadafoto, revisadaacta  });
+        observada, revisadafoto, revisadaacta, observaciones  });
+
+        this.alcaldeValidos = Number(a_sumate) + Number(a_fpv) + Number(a_pdc) + Number(a_somos) + Number(a_mas_ipsp) + Number(a_ca) + Number(a_mts) + Number(a_pan_bol) + Number(a_ucs);
+        this.concejalValidos = Number(c_sumate) + Number(c_fpv) + Number(c_pdc) + Number(c_somos) + Number(c_mas_ipsp) + Number(c_ca) + Number(c_mts) + Number(c_pan_bol) + Number(c_ucs);
+        this.mesaGanada = mesaganada;
+
     });
   }
+
 
   validarMesa() {
     const { codigo } = this.mesaForm.value;
@@ -117,7 +134,7 @@ export class DatosAlcaldeComponent implements OnInit {
       this.mesaAlcaldeService.actualizarMesaAlcalde( data )
         .subscribe( resp => {
           Swal.fire('Actualizada', `Mesa Alcalde: ${ codigo } actualizada correctamente`, 'success').then(()=>{
-            // this.router.navigate(['/dashboard/validar-alcalde']);
+            this.router.navigate(['/dashboard/validar-alcalde']);
 
           })
         })
@@ -157,5 +174,25 @@ export class DatosAlcaldeComponent implements OnInit {
     this.modalImagenService.abrirModal('usuarios', this.mesaAlcalde[0]._id );
     // console.log("this.imgSubs: " + this.imgSubs)
   }
+  sum(){
+    const { a_sumate, a_fpv, a_pdc, a_somos, a_mas_ipsp, a_ca, a_mts, a_pan_bol, a_ucs, a_blancos, a_nulos,
+             c_sumate, c_fpv, c_pdc, c_somos, c_mas_ipsp, c_ca, c_mts, c_pan_bol, c_ucs, c_blancos, c_nulos, habilitados } = this.mesaForm.value;
+    this.alcaldeValidos = Number(a_sumate) + Number(a_fpv) + Number(a_pdc) + Number(a_somos) + Number(a_mas_ipsp) + Number(a_ca) + Number(a_mts) + Number(a_pan_bol) + Number(a_ucs);
+    this.concejalValidos = Number(c_sumate) + Number(c_fpv) + Number(c_pdc) + Number(c_somos) + Number(c_mas_ipsp) + Number(c_ca) + Number(c_mts) + Number(c_pan_bol) + Number(c_ucs);
+    if ( this.alcaldeValidos + Number(a_blancos) + Number(a_nulos) > habilitados ||
+         this.concejalValidos + Number(c_blancos) + Number(c_nulos) > habilitados){
+          // return false;
+          
+        this.sumaValida = false;
+        //Swal.fire('Error', `se supero el total de habilitados en la mesa`, 'error');
+          
+    } else {
+        this.sumaValida = true;
+      // return true;
+      // control.setErrors(null);
+      
+    } 
+  }
 
 }
+

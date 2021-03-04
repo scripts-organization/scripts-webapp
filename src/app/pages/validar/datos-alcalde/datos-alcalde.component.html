@@ -1,16 +1,18 @@
-
+<div class="alert alert-danger" role="alert" *ngIf=!mesaGanada>
+    <strong>Estado:</strong> Mesa Perdida
+</div>
 <div class="row">
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 
-                <h4 class="card-title" *ngIf="mesaAlcalde"><b>{{mesaAlcalde[0].recinto.nombre}} </b></h4>
-                <h4 class="card-title">Mesa: {{codigo}} </h4>
+                <h4 class="card-title" *ngIf="mesaAlcalde"><b>{{mesaAlcalde[0].recinto.nombre}} </b>({{mesaAlcalde[0].numero}})</h4>
+                <h4 class="card-title"><b>Mesa: </b>{{codigo}} </h4>
                 
                 <!-- <h6 class="card-subtitle">Colegio: </h6> -->
 
                 <form class="form-horizontal p-t-20"
-                        [formGroup]="mesaForm"
+                        [formGroup]="mesaForm" 
                         (submit)="validarMesa()">
 
                     <div class="form-group row">
@@ -36,10 +38,10 @@
                     </div>
                                
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">Sumate:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">SUMATE:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_sumate" class="form-control" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
+                                <input type="text" formControlName="a_sumate" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_sumate')">
                                 * valor sumate invalido
@@ -47,7 +49,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_sumate" class="form-control" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
+                                <input type="text" formControlName="c_sumate" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="sumate" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_sumate')">
                                 * valor sumate invalido
@@ -57,10 +59,10 @@
                     
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">fpv:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">FPV:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_fpv" class="form-control" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
+                                <input type="text" formControlName="a_fpv" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_fpv')">
                                 * valor fpv invalido
@@ -68,7 +70,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_fpv" class="form-control" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
+                                <input type="text" formControlName="c_fpv" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="fpv" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_fpv')">
                                 * valor fpv invalido
@@ -77,10 +79,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pdc:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">PDC:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_pdc" class="form-control" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
+                                <input type="text" formControlName="a_pdc" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_pdc')">
                                 * valor pdc invalido
@@ -88,7 +90,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_pdc" class="form-control" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
+                                <input type="text" formControlName="c_pdc" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="pdc" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_pdc')">
                                 * valor pdc invalido
@@ -97,10 +99,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">somos:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">SOMOS:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_somos" class="form-control" id="exampleInputuname1" placeholder="somos" autocomplete="off">
+                                <input type="text" formControlName="a_somos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="somos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_somos')">
                                 * valor somos invalido
@@ -108,7 +110,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_somos" class="form-control" id="exampleInputuname1" placeholder="somos" autocomplete="off">
+                                <input type="text" formControlName="c_somos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="somos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_somos')">
                                 * valor somos invalido
@@ -117,10 +119,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">mas_ipsp:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">MAS_IPSP:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_mas_ipsp" class="form-control" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
+                                <input type="text" formControlName="a_mas_ipsp" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_mas_ipsp')">
                                 * valor mas_ipsp invalido
@@ -128,7 +130,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_mas_ipsp" class="form-control" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
+                                <input type="text" formControlName="c_mas_ipsp" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="mas_ipsp" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_mas_ipsp')">
                                 * valor mas_ipsp invalido
@@ -137,10 +139,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">ca:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">CA:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_ca" class="form-control" id="exampleInputuname1" placeholder="ca" autocomplete="off">
+                                <input type="text" formControlName="a_ca" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="ca" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_ca')">
                                 * valor ca invalido
@@ -148,7 +150,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_ca" class="form-control" id="exampleInputuname1" placeholder="ca" autocomplete="off">
+                                <input type="text" formControlName="c_ca" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="ca" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_ca')">
                                 * valor ca invalido
@@ -157,10 +159,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">mts:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">MTS:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_mts" class="form-control" id="exampleInputuname1" placeholder="mts" autocomplete="off">
+                                <input type="text" formControlName="a_mts" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="mts" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_mts')">
                                 * valor mts invalido
@@ -168,7 +170,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_mts" class="form-control" id="exampleInputuname1" placeholder="mts" autocomplete="off">
+                                <input type="text" formControlName="c_mts" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="mts" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_mts')">
                                 * valor mts invalido
@@ -177,10 +179,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">pan_bol:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">PAN_BOL:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                                <input type="text" formControlName="a_pan_bol" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_pan_bol')">
                                 * valor pan_bol invalido
@@ -188,7 +190,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_pan_bol" class="form-control" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
+                                <input type="text" formControlName="c_pan_bol" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="pan_bol" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_pan_bol')">
                                 * valor pan_bol invalido
@@ -197,10 +199,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">ucs:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">UCS:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_ucs" class="form-control" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
+                                <input type="text" formControlName="a_ucs" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_ucs')">
                                 * valor ucs invalido
@@ -208,7 +210,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_ucs" class="form-control" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
+                                <input type="text" formControlName="c_ucs" class="form-control"  (change)="sum()" id="exampleInputuname1" placeholder="ucs" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_ucs')">
                                 * valor ucs invalido
@@ -217,10 +219,24 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">blancos:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">VOTOS VALIDOS:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_blancos" class="form-control" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
+                                <input type="text"  class="form-control" readonly id="exampleInputuname1" value={{alcaldeValidos}} autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly id="exampleInputuname1" value={{concejalValidos}} autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">BLANCOS:</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" formControlName="a_blancos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_blancos')">
                                 * valor blancos invalido
@@ -228,7 +244,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_blancos" class="form-control" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
+                                <input type="text" formControlName="c_blancos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="blancos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_blancos')">
                                 * valor blancos invalido
@@ -237,10 +253,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">nulos:</label>
+                        <label for="exampleInputuname4" class="col-sm-4 control-label text-right">NULOS:</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="a_nulos" class="form-control" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
+                                <input type="text" formControlName="a_nulos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('a_nulos')">
                                 * valor nulos invalido
@@ -248,12 +264,22 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input type="text" formControlName="c_nulos" class="form-control" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
+                                <input type="text" formControlName="c_nulos" class="form-control" (change)="sum()" id="exampleInputuname1" placeholder="nulos" autocomplete="off">
                             </div>
                             <span class="form-text text-danger" *ngIf="campoEsValido('c_nulos')">
-                                * valor nulos invalido
+                                * valor nulos invalido 
                             </span>
                         </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <!-- <label for="exampleInputuname4" class="col-sm-4 control-label text-right">Observaciones:</label> -->
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <textarea formControlName="observaciones" class="form-control textarea" rows="10" cols="40" placeholder="Comentarios"></textarea>
+                            </div>
+                        </div>
+                        
                     </div>
 
                     <!-- <div class="form-group row">
@@ -283,25 +309,11 @@
                     </div>    
                    
 
-                  
+                    <span class="form-text text-danger" *ngIf=!sumaValida>
+                        * La Sumatoria sobrepasa la cantidad de Habilitados
+                    </span>
 
-                    
-
-                    <!-- <div class="form-group row">
-                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Recinto</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <select class="form-control"
-                                        formControlName="recinto">
-                                    <option value="">Seleccione Recinto</option>
-                                    <option *ngFor="let recinto of recintos"
-                                        [value]="recinto._id">
-                                        {{ recinto.nombre }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
+                
                     <div class="botones">
                         <div class="form-group row m-b-0">
                             <div class="offset-sm-3 col-sm-9">
@@ -314,7 +326,7 @@
                         </div>
                         <div class="form-group row m-b-0">
                             <div class="offset-sm-3 col-sm-9">
-                                <button type="submit"
+                                <button type="button" (click)="validarMesa()"
                                         [disabled]="mesaForm.invalid"
                                         class="btn btn-success waves-effect waves-light boton">
                                     <i class="fa fa-save"></i>

@@ -19,43 +19,15 @@ export class ValidarAlcaldeComponent implements OnInit {
   public rowSelection;
   public rowClassRules;
   public gridOptions;
+  public columnDefs;
+  public ragCellClassRules;
+  
 
   title = 'Mesas Alcalde';
   public cargando: boolean = true;
   public mesasAlcalde: MesaAlcalde[] = [];
 
-  columnDefs = [
-    {
-      field: 'recinto.nombre',
-      sortable: true,
-      filter: true,
-      minWidth: 400,
-    },
-    { field: 'codigo', sortable: true, filter: true },
-    { field: 'numero', sortable: true, filter: true, headerName:'Nro'},
-    // { field: 'habilitados', sortable: true, filter: true },
-    { field: 'a_llenada', sortable: true, filter: true , valueFormatter: this.boolFormatter, headerName:'Datos_A', minWidth: 120},
-    { field: 'c_llenada', sortable: true, filter: true , valueFormatter: this.boolFormatter, headerName:'Datos_C', minWidth: 120},
-    { field: 'fotoenviada' , sortable: true, filter: true, valueFormatter: this.boolFormatter, headerName:'Foto'},
-    { field: 'revisadafoto' , sortable: true, filter: true, valueFormatter: this.boolFormatter, minWidth: 150, headerName:'Foto Revisada'},
-    { field: 'revisadaacta' , sortable: true, filter: true, valueFormatter: this.boolFormatter, minWidth: 150, headerName:'Acta Revisada'},
-
-    { field: 'observada', sortable: true, filter: true , valueFormatter: this.boolFormatter, minWidth: 200},
-    { field: 'a_sumate', sortable: true, filter: true, headerName:'SUMATE' ,minWidth: 120},
-    { field: 'a_fpv', sortable: true, filter: true, headerName:'FPV', minWidth: 120 },
-    { field: 'a_pdc', sortable: true, filter: true, headerName:'PDC', minWidth: 120 },
-    { field: 'a_somos', sortable: true, filter: true, headerName:'SOMOS', minWidth: 120 },
-    { field: 'a_mas_ipsp', sortable: true, filter: true, headerName:'MAS', minWidth: 120 },
-    { field: 'a_ca', sortable: true, filter: true, headerName:'CA', minWidth: 120 },
-    { field: 'a_mts' , sortable: true, filter: true, headerName:'MTS', minWidth: 120},
-    { field: 'a_pan_bol', sortable: true, filter: true, headerName:'PAN-BOL', minWidth: 120 },
-    { field: 'a_ucs', sortable: true, filter: true, headerName:'UCS', minWidth: 120 },
-    { field: 'a_blancos' , sortable: true, filter: true, headerName:'BLANCOS', minWidth: 120},
-    { field: 'a_nulos' , sortable: true, filter: true, minWidth: 200, headerName:'NULLOS'},
-
-
-    // { field: '_id' , sortable: true, filter: true},
-  ];
+  
 
   rowData: MesaAlcalde[];
 
@@ -63,6 +35,41 @@ export class ValidarAlcaldeComponent implements OnInit {
     private mesaAlcaldeService: MesaAlcaldeService,
     private router: Router
   ) {
+
+
+    this.columnDefs = [
+      { 
+        field: 'recinto.nombre',
+        sortable: true,
+        filter: true,
+        minWidth: 400, 
+      },
+      { field: 'codigo', sortable: true, filter: true, cellRenderer: this.ragRenderer},
+      { field: 'numero', sortable: true, filter: true, headerName:'Nro'},
+      // { field: 'habilitados', sortable: true, filter: true },
+      { field: 'a_llenada', sortable: true, filter: true , valueFormatter: this.boolFormatter, headerName:'Datos_A', minWidth: 120},
+      { field: 'c_llenada', sortable: true, filter: true , valueFormatter: this.boolFormatter, headerName:'Datos_C', minWidth: 120},
+      { field: 'fotoenviada' , sortable: true, filter: true, valueFormatter: this.boolFormatter, headerName:'Foto'},
+      { field: 'revisadafoto' , sortable: true, filter: true, valueFormatter: this.boolFormatter, minWidth: 150, headerName:'Foto Revisada'},
+      { field: 'revisadaacta' , sortable: true, filter: true, valueFormatter: this.boolFormatter, minWidth: 150, headerName:'Acta Revisada'},
+  
+      { field: 'observada', sortable: true, filter: true , valueFormatter: this.boolFormatter, minWidth: 200},
+      { field: 'a_sumate', sortable: true, filter: true, headerName:'SUMATE' ,minWidth: 120},
+      { field: 'a_fpv', sortable: true, filter: true, headerName:'FPV', minWidth: 120 },
+      { field: 'a_pdc', sortable: true, filter: true, headerName:'PDC', minWidth: 120 },
+      { field: 'a_somos', sortable: true, filter: true, headerName:'SOMOS', minWidth: 120 },
+      { field: 'a_mas_ipsp', sortable: true, filter: true, headerName:'MAS', minWidth: 120 },
+      { field: 'a_ca', sortable: true, filter: true, headerName:'CA', minWidth: 120 },
+      { field: 'a_mts' , sortable: true, filter: true, headerName:'MTS', minWidth: 120},
+      { field: 'a_pan_bol', sortable: true, filter: true, headerName:'PAN-BOL', minWidth: 120 },
+      { field: 'a_ucs', sortable: true, filter: true, headerName:'UCS', minWidth: 120 },
+      { field: 'a_blancos' , sortable: true, filter: true, headerName:'BLANCOS', minWidth: 120},
+      { field: 'a_nulos' , sortable: true, filter: true, minWidth: 200, headerName:'NULLOS'},
+  
+  
+      // { field: '_id' , sortable: true, filter: true},
+    ];
+
     this.defaultColDef = {
       flex: 1,
       minWidth: 100,
@@ -78,9 +85,7 @@ export class ValidarAlcaldeComponent implements OnInit {
        },
       'foto-revisada': 'data.revisadafoto == true',
       'acta-revisada': 'data.revisadaacta == true',
-    };
-
-   
+    };  
   }
 
   ngOnInit(): void {
@@ -131,6 +136,11 @@ export class ValidarAlcaldeComponent implements OnInit {
     return params.value ? 'Si' : 'No'; 
   }
 
-
+  ragRenderer(params) {
+    if (params.data.a_sumate < params.data.a_mas_ipsp) {
+      return '<span class="rag-element">' + params.value + '</span>';
+  }
+  return params.value;
+  }
 
 }
