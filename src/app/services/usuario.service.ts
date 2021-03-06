@@ -61,7 +61,7 @@ export class UsuarioService {
           cookiepolicy: 'single_host_origin',
         });
 
-        resolve();
+        // resolve();
       });
     });
   }
@@ -166,6 +166,25 @@ export class UsuarioService {
         };
       })
     );
+  }
+
+
+  cargarUsuariosDelegados(idRecinto: string) {
+    const url = `${ base_url }/usuarios/delegados/${ idRecinto }`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, usuarios: Usuario[] }) => resp.usuarios )
+              );
+  }
+
+  
+  obtenerUsuarioPorId( id: string ) {
+
+    const url = `${ base_url }/usuarios/${ id }`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, usuario: Usuario }) => resp.usuario )
+              );
   }
 
   eliminarUsuario(usuario: Usuario) {

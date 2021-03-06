@@ -81,7 +81,7 @@ const childRoutes: Routes = [
     data: { titulo: 'Matenimiento de Recintos' },
   },
   {
-    path: 'delegados',
+    path: 'delegados/:id',
     component: DelegadosComponent,
     data: { titulo: 'Matenimiento de Delegados' },
   },
@@ -98,7 +98,7 @@ const childRoutes: Routes = [
   {
     path: 'jeferecinto',
     component: JeferecintoComponent,
-    data: { titulo: 'Registro de Jefes de Recinto' },
+    data: { titulo: 'Jefes de Recinto' },
   },
   {
     path: 'alcalde',

@@ -1,4 +1,4 @@
-<div class="row animated fadeIn fast">
+<!-- <div class="row animated fadeIn fast">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  -->
 
 <div class="row animated fadeIn fast"
     *ngIf="cargando">
@@ -38,10 +38,10 @@
                 <div class="row">
                     <div class="col-8">
                         <h4 *ngIf=recinto class="card-title">Recinto: ({{ recinto.nombre }}) - Mesas: ({{ recinto.cantidadmesas }})</h4>
-                        <h6 class="card-subtitle">Delegados Registrados: ({{ delegados.length }})</h6>                     
+                        <h6 class="card-subtitle">Delegados Registrados: ({{ usuarios.length }})</h6>                     
                     </div>
 
-                    <div class="col">
+                    <!-- <div class="col">
                         <div class="text-right">
                             <a class="btn btn-primary"
                                routerLink="/dashboard/delegado/nuevo">
@@ -49,7 +49,7 @@
                                 Crear delegado
                             </a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -59,36 +59,43 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th class="w100 text-nowrap">Tipo</th>
                                 <th class="w100">CI</th>
                                 <th>Nombre</th>
                                 <th class="w100">Celular</th>
                                 <th class="w100 text-nowrap">Acciones</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let delegado of delegados">
+                            <tr *ngFor="let usuario of usuarios">
+                                <td>                                  
+                                    <span *ngIf="usuario.jefe" class="label label-danger">Jefe</span>    
+                                    <span *ngIf="!usuario.jefe" class="label label-info">Delegado</span>  
+                                </td>
                                 <td> 
-                                    {{ delegado.ci }}
+                                    {{ usuario.ci }}
                                 </td>
                                 <td>
-                                    {{ delegado.nombre }}
+                                    {{ usuario.nombre }}
                                 </td>
                                 <td>
-                                    {{ delegado.celular }}
+                                    {{ usuario.celular }}
                                 </td>
+                                
 
                                 <td class="text-nowrap text-center">
-                                    <a [routerLink]="['/dashboard','delegado', delegado._id ]" 
+                                    <!-- <a class="cursor"
+                                    
+                                        data-toggle="tooltip" 
+                                        data-original-title="Borrar"
+                                        (click)="resetPassword( usuario )"> 
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                    </a> -->
+                                    <a [routerLink]="['/dashboard','delegado', usuario.uid ]" 
                                         data-toggle="tooltip" 
                                         data-original-title="Editar">
                                         <i class="fa fa-pencil text-inverse m-r-10"></i> 
-                                    </a>
-                                    
-                                    <a class="cursor"
-                                        data-toggle="tooltip" 
-                                        data-original-title="Borrar"
-                                        (click)="borrarDelegado( delegado )"> 
-                                        <i class="fa fa-close text-danger"></i> 
                                     </a>
                                 </td>
                             </tr>

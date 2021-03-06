@@ -8,7 +8,10 @@ import { Delegado } from '../../../models/delegado.model';
 
 import { RecintoService } from '../../../services/recinto.service';
 import { DelegadoService } from '../../../services/delegado.service';
+import { UsuarioService } from '../../../services/usuario.service';
+
 import { delay } from 'rxjs/operators';
+import { Usuario } from '../../../models/usuario.model';
 
 @Component({
   selector: 'app-delegado',
@@ -20,92 +23,100 @@ export class DelegadoComponent implements OnInit {
   public delegadoForm: FormGroup;
   public recintos: Recinto[] = [];
   
-  public delegadoSeleccionado: Delegado;
+  public usuarioSeleccionado: Usuario;
   public recintoSeleccionado: Recinto;
 
 
   constructor( private fb: FormBuilder,
     private recintoService: RecintoService,
-    private delegadoService: DelegadoService,
+    private usuarioService: UsuarioService,
     private router: Router,
     private activatedRoute: ActivatedRoute ) { }
 
     ngOnInit(): void {
       this.activatedRoute.params
-          .subscribe( ({ id }) => this.cargarDelegado( id ) );
+          .subscribe( ({ id }) => this.cargarUsuario( id ) );
   
       this.delegadoForm = this.fb.group({
         nombre: ['', Validators.required ],
         ci: ['', Validators.required],
         celular: ['', Validators.required],
-        correo: ['', Validators.email],
-        recinto: ['', Validators.required ],
+        email: ['',],
+        recinto: ['',  ],
       });
   
-      this.cargarRecintos();
+      //this.cargarRecintos();
   
-      this.delegadoForm.get('recinto').valueChanges
-          .subscribe( recintoId => {
-            this.recintoSeleccionado = this.recintos.find( h => h._id === recintoId );
-          })
+      // this.delegadoForm.get('recinto').valueChanges
+      //     .subscribe( recintoId => {
+      //       this.recintoSeleccionado = this.recintos.find( h => h._id === recintoId );
+      //     })
     }
 
 
-    cargarDelegado(id: string) {
+    cargarUsuario(id: string) {
 
       if ( id === 'nuevo' ) {
         return;
       }
-       this.delegadoService.obtenerDelegadoPorId( id )
+       this.usuarioService.obtenerUsuarioPorId( id )
         .pipe(
           delay(100)
         )
-        .subscribe( delegado => {
+        .subscribe( usuario => {
   
-          if ( !delegado ) {
+          if ( !usuario ) {
             return this.router.navigateByUrl(`/dashboard/delegados`);
           }
   
-          const { nombre, ci, celular, correo, recinto:{ _id } } = delegado; 
-          this.delegadoSeleccionado = delegado;
-          this.delegadoForm.setValue({ nombre,ci,celular,correo,recinto: _id });
+          const { nombre, ci, celular, email, recinto:{ _id } } = usuario; 
+          this.usuarioSeleccionado = usuario;
+          this.delegadoForm.setValue({ nombre,ci,celular,email,recinto: _id });
         });
   
     }
 
-    cargarRecintos() {
+    // cargarRecintos() {
 
-      this.recintoService.cargarRecintos()
-        .subscribe( (recintos: Recinto[]) => {
-          this.recintos = recintos;
-        })
+    //   this.recintoService.cargarRecintos()
+    //     .subscribe( (recintos: Recinto[]) => {
+    //       this.recintos = recintos;
+    //     })
   
-    }
+    // }
 
-    guardarDelegado() {
+   
+
+    guardarUsuario() {
 
       const { nombre } = this.delegadoForm.value;
   
-      if ( this.delegadoSeleccionado ) {
+      if ( this.usuarioSeleccionado ) {
         // actualizar
+        debugger;
         const data = {
           ...this.delegadoForm.value,
-          _id: this.delegadoSeleccionado._id
+          password: this.delegadoForm.value.ci,
+          email: this.delegadoForm.value.ci,
+          uid: this.usuarioSeleccionado.uid,
+          _id: this.usuarioSeleccionado.uid
         }
-        this.delegadoService.actualizarDelegado( data )
+       
+        this.usuarioService.guardarUsuario( data )
           .subscribe( resp => {
             Swal.fire('Actualizado', `${ nombre } actualizado correctamente`, 'success');
           })
   
-      } else {
-        // crear
+      } 
+      // else {
+      //   // crear
         
-        this.delegadoService.crearDelegado( this.delegadoForm.value )
-            .subscribe( (resp: any) => {
-              Swal.fire('Creado', `${ nombre } creado correctamente`, 'success');
-              this.router.navigateByUrl(`/dashboard/delegado/${ resp.delegado._id }`)
-          })
-      }
+      //   this.delegadoService.crearDelegado( this.delegadoForm.value )
+      //       .subscribe( (resp: any) => {
+      //         Swal.fire('Creado', `${ nombre } creado correctamente`, 'success');
+      //         this.router.navigateByUrl(`/dashboard/delegado/${ resp.delegado._id }`)
+      //     })
+      // }
   
   
   

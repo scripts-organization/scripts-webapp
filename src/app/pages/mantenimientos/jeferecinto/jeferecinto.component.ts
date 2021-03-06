@@ -176,10 +176,10 @@ export class JeferecintoComponent implements OnInit {
   onCellDoubleClicked(event) {
     //console.log('onSelectionChanged:' + event);
     var selectedRows = this.gridApi.getSelectedRows();
-    document.querySelector('#selectedRows').innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].codigo : '';
+    // document.querySelector('#selectedRows').innerHTML =
+    //   selectedRows.length === 1 ? selectedRows[0].codigo : '';
 
-    this.router.navigate(['/dashboard/datos-alcalde', selectedRows[0].codigo]);
+    this.router.navigate(['/dashboard/delegados', selectedRows[0]._id]);
   }
 
   boolFormatter(params) {

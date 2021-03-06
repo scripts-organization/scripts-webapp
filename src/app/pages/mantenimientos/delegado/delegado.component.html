@@ -9,7 +9,7 @@
 
                 <form class="form-horizontal p-t-20"
                         [formGroup]="delegadoForm"
-                        (submit)="guardarDelegado()">
+                        (submit)="guardarUsuario()">
 
                                      
                     <div class="form-group row">
@@ -52,20 +52,20 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="exampleInputuname5" class="col-sm-3 control-label">Correo</label>
+                    <!-- <div class="form-group row">
+                        <label for="exampleInputuname5" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-9">
                             <div class="input-group">
                                 <input type="text" 
-                                        formControlName="correo"
+                                        formControlName="email"
                                         class="form-control" 
                                         id="exampleInputuname5" 
                                         placeholder="Correo">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="exampleInputEmail3" class="col-sm-3 control-label">Recinto</label>
                         <div class="col-sm-9">
                             <div class="input-group">
@@ -79,7 +79,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row m-b-0">
                         <div class="offset-sm-3 col-sm-9">
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <div class="col animated fadeIn fast"  
+    <!-- <div class="col animated fadeIn fast"  
         *ngIf="recintoSeleccionado">
         <div class="card">
             <div class="card-body">
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 </div>
 
 

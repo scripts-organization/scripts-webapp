@@ -31,7 +31,7 @@ export class DatosAlcaldeComponent implements OnInit {
 
   public alcaldeValidos;
   public concejalValidos;
-  public mesaGanada;
+  public mesaGanada = true;
   public sumaValida = true;
 
 
