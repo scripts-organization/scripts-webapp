@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
 
     this.usuarioService.login( this.loginForm.value )
       .subscribe( resp => {
-
-        if ( this.loginForm.get('remember').value ){ 
-          localStorage.setItem('email', this.loginForm.get('email').value );
-        } else {
-          localStorage.removeItem('email');
-        }
+         localStorage.setItem('email', this.loginForm.get('email').value );
+        // if ( this.loginForm.get('remember').value ){ 
+        //   localStorage.setItem('email', this.loginForm.get('email').value );
+        // } else {
+        //   //localStorage.removeItem('email');
+        // }
 
         // Navegar al Dashboard
         this.router.navigateByUrl('/');

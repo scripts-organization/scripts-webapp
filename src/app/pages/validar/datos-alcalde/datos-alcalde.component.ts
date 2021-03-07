@@ -48,6 +48,7 @@ export class DatosAlcaldeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.enableButton();
     this.cargarMesaAlcalde();
     this.imgSubs = this.imgSubs = this.modalImagenService.nuevaImagen
       .pipe(delay(100))
@@ -90,6 +91,12 @@ export class DatosAlcaldeComponent implements OnInit {
     });
   }
 
+  enableButton() {
+    const users = ['4494336@sumate.com','5253588@sumate.com','9351265@sumate.com','7937567@sumate.com','0012274@sumate.com','7966943@sumate.com'];
+    const currentUser = localStorage.getItem('email' );
+    const encontrado = users.findIndex(e=>e==currentUser);
+    return encontrado >= 0 ? true : false;
+  }
   
   cargarMesaAlcalde() {
     this.cargando = true;
