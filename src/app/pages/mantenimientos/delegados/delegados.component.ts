@@ -66,12 +66,12 @@ export class DelegadosComponent implements OnInit, OnDestroy {
       .subscribe((usuarios) => {
         this.cargando = false;
         this.usuarios = usuarios;
-        console.log(usuarios);
+        //console.log(usuarios);
       });
   }
 
   resetPassword(usuario: Usuario) {
-    console.log(usuario);
+    //console.log(usuario);
   }
 
   // cargarDelegados() {

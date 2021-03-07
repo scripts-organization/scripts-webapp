@@ -45,8 +45,7 @@ export class MesaAlcaldeService {
 
   actualizarMesaAlcalde( mesaAlcalde: MesaAlcalde ) {
 
-    debugger;
-    if(mesaAlcalde['revisadafoto'] === true){
+    if(mesaAlcalde['revisadafoto'] === true || mesaAlcalde['revisadaacta'] === true){
       mesaAlcalde['a_llenada'] = true;
       mesaAlcalde['c_llenada'] = true;
     }

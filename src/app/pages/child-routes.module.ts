@@ -11,9 +11,6 @@ import { PerfilComponent } from './perfil/perfil.component';
 
 // Mantenimientos
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
-import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
-import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
-import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../guards/admin.guard';
 import { RecintosComponent } from './mantenimientos/recintos/recintos.component';
@@ -23,6 +20,8 @@ import { JeferecintoComponent } from './mantenimientos/jeferecinto/jeferecinto.c
 import { AlcaldeComponent } from './mesas/alcalde/alcalde.component';
 import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcalde.component';
 import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.component';
+import { MapasComponent } from './reportes/mapas/mapas.component';
+
 
 
 const childRoutes: Routes = [
@@ -60,21 +59,6 @@ const childRoutes: Routes = [
   { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
 
   // Mantenimientos
-  {
-    path: 'hospitales',
-    component: HospitalesComponent,
-    data: { titulo: 'Matenimiento de Hospitales' },
-  },
-  {
-    path: 'medicos',
-    component: MedicosComponent,
-    data: { titulo: 'Matenimiento de Medicos' },
-  },
-  {
-    path: 'medico/:id',
-    component: MedicoComponent,
-    data: { titulo: 'Matenimiento de Medicos' },
-  },
   {
     path: 'recintos',
     component: RecintosComponent,
@@ -114,6 +98,11 @@ const childRoutes: Routes = [
     path: 'datos-alcalde/:id',
     component: DatosAlcaldeComponent,
     data: { titulo: 'Datos Alcalde' },
+  },
+  {
+    path: 'mapas',
+    component: MapasComponent,
+    data: { titulo: 'mapas' },
   },
 
   // Rutas de Admin

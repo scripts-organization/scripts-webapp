@@ -36,6 +36,15 @@ export class RecintoService {
               );
   }
 
+  cargarRecintosPorDistrito(distrito) {
+
+    const url = `${ base_url }/recintos/distrito/${ distrito }`;
+    return this.http.get( url, this.headers )
+              .pipe(
+                map( (resp: {ok: boolean, recintos: Recinto[] }) => resp.recintos )
+              );
+  }
+
   obtenerRecintoPorId( id: string ) {
     //console.log("id-"+id)
     const url = `${ base_url }/recintos/${ id }`;

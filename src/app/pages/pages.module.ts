@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 
 import { PipesModule } from '../pipes/pipes.module';
+import { AgmCoreModule } from '@agm/core';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -19,9 +20,6 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
-import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
-import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
-import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { RecintosComponent } from './mantenimientos/recintos/recintos.component';
 import { DelegadosComponent } from './mantenimientos/delegados/delegados.component';
@@ -30,6 +28,7 @@ import { JeferecintoComponent } from './mantenimientos/jeferecinto/jeferecinto.c
 import { AlcaldeComponent } from './mesas/alcalde/alcalde.component';
 import { ValidarAlcaldeComponent } from './validar/validar-alcalde/validar-alcalde.component';
 import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.component';
+import { MapasComponent } from './reportes/mapas/mapas.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +41,6 @@ import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.com
     RxjsComponent,
     PerfilComponent,
     UsuariosComponent,
-    HospitalesComponent,
-    MedicosComponent,
-    MedicoComponent,
     BusquedaComponent,
     RecintosComponent,
     DelegadosComponent,
@@ -53,6 +49,7 @@ import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.com
     AlcaldeComponent,
     ValidarAlcaldeComponent,
     DatosAlcaldeComponent,
+    MapasComponent,
   ],
   exports: [
     DashboardComponent,
@@ -69,7 +66,10 @@ import { DatosAlcaldeComponent } from './validar/datos-alcalde/datos-alcalde.com
     RouterModule,
     ComponentsModule,
     PipesModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCuGCpF_FbYvYT2ioeHUldvKnYLj3IogKM'
+    }),
   ],
 })
 export class PagesModule {}

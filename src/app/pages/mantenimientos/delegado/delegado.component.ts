@@ -93,7 +93,6 @@ export class DelegadoComponent implements OnInit {
   
       if ( this.usuarioSeleccionado ) {
         // actualizar
-        debugger;
         const data = {
           ...this.delegadoForm.value,
           password: this.delegadoForm.value.ci,

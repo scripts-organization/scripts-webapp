@@ -1,0 +1,40 @@
+<div class="botones-foto">
+  <div class="btn-group" role="group" >
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(1)">1</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(2)">2</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(3)">3</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(4)">4</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(5)">5</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(6)">6</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(7)">7</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(8)">8</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(9)">9</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(10)">10</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(11)">11</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(12)">12</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(13)">13</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(14)">14</button>
+      <button type="button" class="btn btn-primary" (click)="cargarRecintos(15)">15</button>
+
+      
+
+  </div>
+  
+  
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId" [fitBounds]="true"  >
+  <agm-marker *ngFor="let recinto of recintos" [latitude]="recinto.latitud" [longitude]="recinto.longitud"
+  [agmFitBounds]="true" >
+    <agm-info-window>
+      <h3>{{ recinto.nombre }}</h3>
+      <p>Cantidad de Mesas: {{ recinto.cantidadmesas }} </p>
+      <p>Jefe de Recinto: ******* </p>
+      <p>Distrito: {{ recinto.distrito }} </p>
+      <p>Direccion: {{ recinto.Direccion }} </p>
+
+    </agm-info-window>
+  </agm-marker>
+
+
+</agm-map>

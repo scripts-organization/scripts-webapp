@@ -100,7 +100,6 @@ export class DatosAlcaldeComponent implements OnInit {
         return this.router.navigateByUrl(`/dashboard/validar-alcalde`);
       }
       this.cargando = false;
-      debugger;
       this.mesaAlcalde = mesaAlcalde;
       //console.log("img1: " + this.mesaAlcalde[0].img_1);
     

@@ -21,6 +21,10 @@ export class ValidarAlcaldeComponent implements OnInit {
   public gridOptions;
   public columnDefs;
   public ragCellClassRules;
+  public paginationPageSize;
+  public serverSideStoreType;
+  public cacheBlockSize;
+  public rowModelType;
   
 
   title = 'Mesas Alcalde';
@@ -86,6 +90,10 @@ export class ValidarAlcaldeComponent implements OnInit {
       'foto-revisada': 'data.revisadafoto == true',
       'acta-revisada': 'data.revisadaacta == true',
     };  
+    this.rowModelType = 'serverSide';
+    this.serverSideStoreType = 'partial';
+    this.paginationPageSize = 20;
+    this.cacheBlockSize = 20;
   }
 
   ngOnInit(): void {
