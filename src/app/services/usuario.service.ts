@@ -125,11 +125,14 @@ export class UsuarioService {
   }
 
   login(formData: LoginForm) {
-    return this.http.post(`${base_url}/login`, formData).pipe(
-      tap((resp: any) => {
-        this.guardarLocalStorage(resp.token, resp.menu);
-      })
-    );
+    if(formData.email.includes("@sumate.com")){
+      return this.http.post(`${base_url}/login`, formData).pipe(
+        tap((resp: any) => {
+          this.guardarLocalStorage(resp.token, resp.menu);
+        })
+      );
+    }
+    
   }
 
   loginGoogle(token) {
