@@ -63,6 +63,7 @@
                                 <th class="w100">CI</th>
                                 <th>Nombre</th>
                                 <th class="w100">Celular</th>
+                                <th class="w100">Asistencia</th>
                                 <th class="w100 text-nowrap">Acciones</th>
 
                             </tr>
@@ -81,6 +82,11 @@
                                 </td>
                                 <td>
                                     {{ usuario.celular }}
+                                </td>
+                                <td>  
+                                    <span *ngIf="usuario.asistencia" class="badge bg-success">Presente</span>
+                                    <span *ngIf="!usuario.asistencia" class="badge bg-warning text-dark">Ausente</span>                                
+
                                 </td>
                                 
 

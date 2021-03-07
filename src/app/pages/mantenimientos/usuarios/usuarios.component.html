@@ -58,14 +58,14 @@
                                 <td>{{ usuario.email }}</td>
                                 <td>{{ usuario.nombre }}</td>
 
-                                <td>
+                                <!-- <td>
                                     <select class="form-control"
                                             [(ngModel)]="usuario.role"
                                             (change)="cambiarRole( usuario )">
                                         <option value="ADMIN_ROLE">Admin</option>
                                         <option value="USER_ROLE">User</option>
                                     </select>
-                                </td>
+                                </td> -->
 
                                 <td>
                                     <span *ngIf="usuario.google" class="label label-danger">Google</span>    

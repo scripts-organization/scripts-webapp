@@ -16,7 +16,8 @@ export class Usuario {
         public role?: 'ADMIN_ROLE' | 'USER_ROLE',
         public uid?: string,
         public recinto?: Recinto,
-        public jefe? : boolean
+        public jefe? : boolean,
+        public asistencia?: boolean
     ) {}
 
     get imagenUrl() {
