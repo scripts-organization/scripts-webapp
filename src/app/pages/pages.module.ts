@@ -68,7 +68,7 @@ import { MapasComponent } from './reportes/mapas/mapas.component';
     PipesModule,
     AgGridModule.withComponents([]),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCuGCpF_FbYvYT2ioeHUldvKnYLj3IogKM'
+
     }),
   ],
 })
